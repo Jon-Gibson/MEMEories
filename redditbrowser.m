@@ -72,7 +72,7 @@ if ~exist('I','var')
     figure('Name','Reddit Preview','NumberTitle','off');
     I = get(event_obj, 'DataIndex');
 elseif strcmp(I,"")
-    answer = inputdlg("Go to post number:","Select Post",[1 35],"");
+    answer = inputdlg("Go to post number:","Select Post",[1 35]);
      I = str2double(answer{1});
     if isnan(I) 
         I = 1;

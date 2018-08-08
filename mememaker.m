@@ -134,10 +134,6 @@ uicontrol('Style', 'pushbutton', 'String', 'Share on Facebook',...
 
 end
 
-function share(~,~,url)
-web("https://www.facebook.com/sharer/sharer.php?u="+url)
-end
-
 % gets user input for texts
 function [top, bottom] = userInput(~,~)
 prompt = {'Top Text','Bottom Text'};
