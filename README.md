@@ -1,6 +1,6 @@
 # MEMEories
-MATLAB Reddit Client and Meme Creator. 
-
+### MATLAB Reddit Client and Meme Creator. 
 Second place winner at a MathWorks intern hackathon.
 
-- Alex, Alexa, Jon, and William
+Happy MEMEing
+– Alex, Alexa, Jon, and William
