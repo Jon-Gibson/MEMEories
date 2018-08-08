@@ -457,18 +457,28 @@ uicontrol('Style', 'pushbutton', 'String', 'Bill Nye',...
 
 end
 
+% ermagerd feature
 function result = convert_EHRMAGERD(string)
 inter = '';
 for i = 1:(strlength(string))
     character = string(i);
-    if i < strlength(string) && vowel_find(character)
-        if vowel_find(string(i+1))
+    
+    if i < strlength(string) && is_vowel(character)
+        % multiple vowels in a row
+        if is_vowel(string(i+1))
             continue
+        % single vowel
+        elseif is_silent_e(string, i)
+            inter = [inter, 'E'];
         else
             inter = [inter, 'ER'];
         end
     elseif strcmpi(character, 'y')
-        inter = [inter, 'AH'];
+        if is_first_letter_of_word(string, i)
+            inter = [inter, 'Y'];
+        else
+            inter = [inter, 'A'];
+        end
     else
         inter = [inter, character];
     end
@@ -476,7 +486,17 @@ end
 result = upper(inter);
 end
 
-function result = vowel_find(i)
+function result = is_silent_e(string, index)
+    result = (index > 1) && ...
+             ~is_vowel(string(index - 1)) && ...
+             (strcmpi(string(index), 'e'));
+end
+
+function result = is_first_letter_of_word(string, index)
+    result = (index == 1) || strcmpi(string(index - 1), ' ');
+end
+
+function result = is_vowel(i)
 result = strcmpi(i, 'a') || strcmpi(i, 'e') || ...
     strcmpi(i, 'i') || strcmpi(i, 'o') || strcmpi(i, 'u');
 end
